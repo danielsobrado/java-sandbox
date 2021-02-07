@@ -1,2 +1,2 @@
-# java-projects
+# Java Projects
 My sandbox on Java

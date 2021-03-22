@@ -1,4 +1,4 @@
-package com.jds.fpe;
+package com.jds.fpe.alphabet;
 
 import com.idealista.fpe.config.Alphabet;
 

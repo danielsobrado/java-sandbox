@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.jboss.resteasy.annotations.SseElementType;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
@@ -38,8 +39,9 @@ public class MainWeb {
 	}
 
 	@GET
-	@Produces(MediaType.TEXT_HTML)
 	@Path("/stream")
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    @SseElementType("text/html")
 	public Multi<String> stream() {
 		return textos;
 	}

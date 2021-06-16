@@ -13,6 +13,7 @@ public class Bridge {
 
 	@Outgoing("texto-sent")
 	@Incoming("texto")
+//	@Broadcast
 	public String receive(String str) {
 		LOGGER.infof("Received " + str);
 		return "Received " + str;

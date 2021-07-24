@@ -25,3 +25,5 @@ hs_err_pid*
 lambdas/.project
 lambdas/.classpath
 *.prefs
+data-structures-algorithms/.classpath
+data-structures-algorithms/.project

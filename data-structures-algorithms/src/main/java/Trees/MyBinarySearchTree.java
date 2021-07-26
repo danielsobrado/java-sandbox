@@ -1,5 +1,8 @@
 package Trees;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 
  * Implement a Binary Search Tree
@@ -52,26 +55,28 @@ public class MyBinarySearchTree {
 		}
 		
 		var current = this.root;
-		while (hasChildren(current)) {
+		while (true) {
 			if (current.value == value) {
 				return;
 			} else if (current.value > value) {
+				if (current.left == null) {
+					current.left = new Node(value);
+					return;
+				}
 				current = current.left;
 			} else {
+				if (current.right == null) {
+					current.right = new Node(value);
+					return;
+				}
 				current = current.right;
 			}
-		}
-		
-		if (current.value < value) {
-			current.right = new Node(value);
-		} else {
-			current.left = new Node(value);
 		}
 	}
 
 	public boolean find(Integer value) {
 		var current = this.root;
-		while (hasChildren(current)) {
+		while (current != null) {
 			if (current.value == value) {
 				return true;
 			} else if (current.value > value) {
@@ -79,39 +84,53 @@ public class MyBinarySearchTree {
 				else return true;
 			} else {
 				if (!value.equals(current.right.value)) current = current.right;
-				else return true;
-				
+				else return true;				
 			}
 		}
 		return false;
 	}
 	
 
-	public void traversePreOrder() {
-		
+	public int[] traversePreOrder() {
+		List<Integer> results = new ArrayList<Integer>();
+		this.traversePreOrder(this.root, results);
+		int[] arr = results.stream().mapToInt(i -> i).toArray();
+		return arr;
 	}
 
-	public void traverseInOrder() {
-		
+	public int[] traverseInOrder() {
+		List<Integer> results = new ArrayList<Integer>();
+		this.traverseInOrder(this.root, results);
+		int[] arr = results.stream().mapToInt(i -> i).toArray();
+		return arr;
 	}
 
-	public void traversePostOrder() {
-		
+	public int[] traversePostOrder() {
+		List<Integer> results = new ArrayList<Integer>();
+		this.traversePostOrder(this.root, results);
+		int[] arr = results.stream().mapToInt(i -> i).toArray();
+		return arr;
 	}
 
-	private void traversePreOrder(Node node) {
+	private void traversePreOrder(Node node, List<Integer> results) {
 		if (node == null) return;
-		
+		results.add(node.value);
+		traversePreOrder(node.left, results);
+		traversePreOrder(node.right, results);
 	}
 	
-	private void traverseInOrder(Node node) {
+	private void traverseInOrder(Node node, List<Integer> results) {
 		if (node == null) return;
-		
+		traverseInOrder(node.left, results);
+		results.add(node.value);		
+		traverseInOrder(node.right, results);
 	}
 	
-	private void traversePostOrder(Node node) {
+	private void traversePostOrder(Node node, List<Integer> results) {
 		if (node == null) return;
-		
+		traversePostOrder(node.left, results);
+		traversePostOrder(node.right, results);
+		results.add(node.value);
 	}
 	
 	public boolean hasChildren(Node node) {

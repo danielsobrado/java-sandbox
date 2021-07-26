@@ -77,15 +77,11 @@ public class MyBinarySearchTree {
 	public boolean find(Integer value) {
 		var current = this.root;
 		while (current != null) {
-			if (current.value == value) {
-				return true;
-			} else if (current.value > value) {
-				if (!value.equals(current.left.value)) current = current.left;
-				else return true;
-			} else {
-				if (!value.equals(current.right.value)) current = current.right;
-				else return true;				
-			}
+			if (current.value > value) {
+				current = current.left;
+			} else if (current.value < value) {
+				current = current.right;
+			} else return true; 
 		}
 		return false;
 	}

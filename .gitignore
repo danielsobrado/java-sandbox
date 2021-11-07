@@ -27,3 +27,7 @@ lambdas/.classpath
 *.prefs
 data-structures-algorithms/.classpath
 data-structures-algorithms/.project
+springboot-mysql-jwt-api/.project
+springboot-mysql-jwt-api/.classpath
+springboot-mysql-jwt-api/target
+springboot-mysql-jwt-api/src/test

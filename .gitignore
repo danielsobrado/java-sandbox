@@ -18,16 +18,23 @@
 *.zip
 *.tar.gz
 *.rar
+*.lst
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /.metadata/
 lambdas/.project
 lambdas/.classpath
+/**/target/*
+/**/project/*
+/**/.metals/*
+/**/.vscode/*
 *.prefs
-data-structures-algorithms/.classpath
-data-structures-algorithms/.project
-springboot-mysql-jwt-api/.project
-springboot-mysql-jwt-api/.classpath
-springboot-mysql-jwt-api/target
-springboot-mysql-jwt-api/src/test
+/**/.classpath
+/**/.project
+/**/.settings/*
+format-preserving-encryption/.settings/org.eclipse.jdt.core.prefs
+format-preserving-encryption/.project
+/**/.bloop/akka-http-seed-java.json
+/**/.bloop/akka-http-seed-java-test.json
+/**/.bloop/bloop.settings.json

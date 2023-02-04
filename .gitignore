@@ -38,3 +38,7 @@ format-preserving-encryption/.project
 /**/.bloop/akka-http-seed-java.json
 /**/.bloop/akka-http-seed-java-test.json
 /**/.bloop/bloop.settings.json
+.idea/*
+/**/gradlew.bat
+/**/gradlew
+/**/gradle/wrapper/*

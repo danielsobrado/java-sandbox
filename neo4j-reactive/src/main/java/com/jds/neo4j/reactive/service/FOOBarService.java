@@ -3,10 +3,13 @@ package com.jds.neo4j.reactive.service;
 
 import com.jds.neo4j.reactive.model.BAR;
 import com.jds.neo4j.reactive.model.FOO;
+import com.jds.neo4j.reactive.model.Location;
 import com.jds.neo4j.reactive.repository.FOOBarRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Set;
 
 @Service
 public class FOOBarService {
@@ -37,5 +40,14 @@ public class FOOBarService {
     public Flux<FOO> findFOOsByBarName(String name) {
 
         return repository.findByBarName(name);
+    }
+
+    public Mono<FOO> createLocation(Long id, Location location) {
+        return repository.findById(id)
+                .map(foo -> {
+                    foo.getLocations().add(location);
+                    return foo;
+                })
+                .flatMap(repository::save);
     }
 }

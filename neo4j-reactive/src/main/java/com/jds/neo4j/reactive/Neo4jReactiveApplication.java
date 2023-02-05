@@ -19,7 +19,7 @@ public class Neo4jReactiveApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Neo4jReactiveApplication.class, args);
 	}
-	
+
 	@Bean(ReactiveNeo4jRepositoryConfigurationExtension.DEFAULT_TRANSACTION_MANAGER_BEAN_NAME)
 	public ReactiveTransactionManager reactiveTransactionManager(
 			Driver driver,

@@ -12,6 +12,7 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Node
 @Data
@@ -27,6 +28,9 @@ public class FOO {
 
     @Relationship(type = "PARENT_OF")
     private BAR bar;
+
+    @Relationship(type = "HAS_LOCATION", direction = Relationship.Direction.OUTGOING)
+    private Set<Location> locations;
 
     @CreatedDate
     private LocalDateTime createdDate;

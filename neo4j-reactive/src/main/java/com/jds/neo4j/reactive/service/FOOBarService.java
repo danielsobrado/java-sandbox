@@ -13,27 +13,29 @@ public class FOOBarService {
     private final FOOBarRepository repository;
 
     public FOOBarService(FOOBarRepository repository) {
+
         this.repository = repository;
     }
 
     public Mono<FOO> createFOO(Long id, String name, BAR bar) {
-        return repository.save(new FOO(id, name, bar));
+        return repository.save(FOO.builder().name(name).bar(bar).build());
+
     }
 
     public Mono<FOO> updateFOO(Long id, String name) {
-        return repository.findById(id)
-                .map(foo -> {
-                    foo.setName(name);
-                    return foo;
-                })
-                .flatMap(repository::save);
+        return repository.findById(id).map(foo -> {
+            foo.setName(name);
+            return foo;
+        }).flatMap(repository::save);
     }
 
     public Mono<Void> deleteFOO(Long id) {
+
         return repository.deleteById(id);
     }
 
     public Flux<FOO> findFOOsByBarName(String name) {
+
         return repository.findByBarName(name);
     }
 }

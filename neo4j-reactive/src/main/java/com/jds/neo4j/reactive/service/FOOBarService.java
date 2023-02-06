@@ -4,23 +4,21 @@ package com.jds.neo4j.reactive.service;
 import com.jds.neo4j.reactive.model.BAR;
 import com.jds.neo4j.reactive.model.FOO;
 import com.jds.neo4j.reactive.model.Location;
-import com.jds.neo4j.reactive.repository.FOOBarRepository;
+import com.jds.neo4j.reactive.repository.FOORepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Set;
-
 @Service
 public class FOOBarService {
-    private final FOOBarRepository repository;
+    private final FOORepository repository;
 
-    public FOOBarService(FOOBarRepository repository) {
+    public FOOBarService(FOORepository repository) {
 
         this.repository = repository;
     }
 
-    public Mono<FOO> createFOO(Long id, String name, BAR bar) {
+    public Mono<FOO> createFOO(String name, BAR bar) {
         return repository.save(FOO.builder().name(name).bar(bar).build());
 
     }

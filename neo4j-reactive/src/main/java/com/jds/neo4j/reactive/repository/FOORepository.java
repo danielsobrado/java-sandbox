@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface FOOBarRepository extends ReactiveNeo4jRepository<FOO, Long> {
+public interface FOORepository extends ReactiveNeo4jRepository<FOO, Long> {
     Mono<FOO> findByName(String name);
     Flux<FOO> findByBarName(String name);
 }

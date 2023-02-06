@@ -5,13 +5,14 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Node
@@ -30,7 +31,7 @@ public class BAR {
     private FOO foo;
 
     @Relationship(type = "HAS_LOCATION", direction = Relationship.Direction.OUTGOING)
-    private Set<Location> locations;
+    private List<Location> locations = new ArrayList<>();
 
     @CreatedDate
     private LocalDateTime createdDate;

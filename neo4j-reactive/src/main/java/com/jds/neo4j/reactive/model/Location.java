@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Node
 @Data
 @ToString
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location {

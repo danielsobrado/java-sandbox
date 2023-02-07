@@ -18,7 +18,7 @@ import java.util.List;
 @Node
 @Data
 @ToString
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class BAR {
@@ -30,6 +30,7 @@ public class BAR {
     @Relationship(type = "CHILD_OF")
     private FOO foo;
 
+    @Builder.Default
     @Relationship(type = "HAS_LOCATION", direction = Relationship.Direction.OUTGOING)
     private List<Location> locations = new ArrayList<>();
 

@@ -18,7 +18,7 @@ import java.util.List;
 @Node
 @Data
 @ToString
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class FOO {
@@ -30,6 +30,7 @@ public class FOO {
     @Relationship(type = "PARENT_OF")
     private BAR bar;
 
+    @Builder.Default
     @Relationship(type = "HAS_LOCATION", direction = Relationship.Direction.OUTGOING)
     private List<Location> locations = new ArrayList<>();
 
@@ -44,5 +45,9 @@ public class FOO {
 
     @LastModifiedBy
     private String updatedBy;
+
+    public void addLocation(Location location) {
+        locations.add(location);
+    }
 
 }
